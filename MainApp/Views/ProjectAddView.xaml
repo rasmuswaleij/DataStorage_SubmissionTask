@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="MainApp.Views.ProjectAddView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MainApp.Views"
+             xmlns:viewmodels="clr-namespace:MainApp.ViewModels"
+             xmlns:models="clr-namespace:Business.Models;assembly=Business"
+             d:DataContext="{d:DesignInstance Type=viewmodels:ProjectAddViewModel}"
+             
+             Background="White"
+             mc:Ignorable="d" 
+             
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="New Project" FontSize="20" FontWeight="Bold"/>
+
+        <StackPanel Grid.Row="1" Margin="0 20 0 0">
+            <TextBlock Text="Project name"/>
+            <TextBox Text="{Binding Project.ProjectName}"  Margin="0 0 0 10" Padding="4"/>
+
+            <TextBlock Text="Service"/>
+            <TextBox Text="{Binding Project.Service}" Margin="0 0 0 10" Padding="4"/>
+
+            <TextBlock Text="Project manager"/>
+            <TextBox Text="{Binding Project.ProjectManager}" Margin="0 0 0 10" Padding="4"/>
+
+            <TextBlock Text="Status"/>
+            <TextBox Text="{Binding Project.Status}" Margin="0 0 0 10" Padding="4"/>
+
+        </StackPanel>
+
+        <StackPanel Grid.Row="2">
+            <Button Content="Save" Command="{Binding SaveCommand}" Margin="0 10 0 5" Padding="5"/>
+            <Button Content="Cancel" Command="{Binding GoToListViewCommand}" Margin="0 10 0 5" Padding="5"/>
+
+
+        </StackPanel>
+        
+    </Grid>
+</UserControl>
