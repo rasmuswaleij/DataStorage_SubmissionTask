@@ -10,7 +10,7 @@
              
              mc:Ignorable="d" 
              
-             Background="LavenderBlush"
+             Background="LightSkyBlue"
              d:DesignHeight="450" d:DesignWidth="300">
     
     <Grid Margin="15">
@@ -25,29 +25,28 @@
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
 
-            <TextBlock Grid.Column="0" Text="Project List" FontSize="20" FontWeight="Bold" />
-            <Button Grid.Column="1" Command="{Binding GoToAddViewCommand}" Content="&#xE710;" FontFamily="Segoe MDL2 Assets" Padding="7 0"/>
-
+            <TextBlock Grid.Column="0" Text="Project List" FontSize="30" FontWeight="ExtraLight" />
+            <Button Grid.Column="1" Command="{Binding GoToAddViewCommand}" Content="&#xE710;" FontFamily="Segoe MDL2 Assets"  Padding="12 0" />
         </Grid>
 
         <ListView Grid.Row="1" ItemsSource="{Binding Projects}" Margin="0 20 0 0" HorizontalAlignment="Stretch">
             <ListView.ItemTemplate>
                 <DataTemplate DataType="models:Project">
-                    <Grid>
+                    <Grid Margin="10 10 10 0">
                         <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="190"/>
                             <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="auto"/>
                             
                         </Grid.ColumnDefinitions>
 
-                        <StackPanel Grid.Column="0">
-                            <TextBlock Text="{Binding ProjectName}"/>
+                        <StackPanel Grid.Column="0" >
+                            <TextBlock Text="{Binding ProjectName}" FontWeight="Bold"/>
                             <TextBlock Text="{Binding Service}"/>
-                            <TextBlock Text="{Binding ProjectManager}"/>
+                            <TextBlock Text="{Binding ProjectManager}" />
 
                         </StackPanel>
 
-                        <StackPanel Grid.Column="1" Orientation="Horizontal">
+                        <StackPanel Grid.Column="1" Orientation="Horizontal" >
                             <Button CommandParameter="{Binding .}" Command="{Binding DataContext.GoToDetailsViewCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" Content="&#xE712;" FontFamily="Segoe MDL2 Assets" Padding="7 0" Background="Transparent"/>
                         </StackPanel>
                         

@@ -11,7 +11,7 @@
         d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
         
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="300">
+        Title="MainWindow" Height="650" Width="300">
     <Grid>
         <ContentControl Content="{Binding CurrentViewModel}">
             <ContentControl.Resources>

@@ -9,7 +9,7 @@
              d:DataContext="{d:DesignInstance Type=viewmodels:ProjectDetailsViewModel}"
              
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="400">
     <Grid Margin="15">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -21,17 +21,25 @@
         <TextBlock Grid.Row="0" Grid.Column="0" Text="Project Details" FontSize="20" FontWeight="Bold"/>
 
         <StackPanel Grid.Row="1" Margin="0 20 0 0">
-            <TextBlock Text="Project Name"/>
+            <TextBlock Text="Id" FontWeight="Bold"/>
+            <TextBlock Text="{Binding Project.Id}" Margin="0 0 0 10" Padding="4"/>
+
+            <TextBlock Text="Project Name" FontWeight="Bold"/>
             <TextBlock Text="{Binding Project.ProjectName}" Margin="0 0 0 10" Padding="4"/>
 
-            <TextBlock Text="Project Manager"/>
+            <TextBlock Text="Project Manager" FontWeight="Bold"/>
             <TextBlock Text="{Binding Project.ProjectManager}" Margin="0 0 0 10" Padding="4"/>
 
-            <TextBlock Text="Service "/>
+            <TextBlock Text="Service " FontWeight="Bold"/>
             <TextBlock Text="{Binding Project.Service}" Margin="0 0 0 10" Padding="4"/>
 
-            <TextBlock Text="Status "/>
+            <TextBlock Text="Status " FontWeight="Bold"/>
             <TextBlock Text="{Binding Project.Status}" Margin="0 0 0 10" Padding="4"/>
+
+            <TextBlock Text="Customer Name " FontWeight="Bold"/>
+            <TextBlock Text="{Binding Project.Customer.Name}" Margin="0 0 0 10" Padding="4"/>
+
+        
 
         </StackPanel>
         <StackPanel Grid.Row="2">

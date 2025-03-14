@@ -1,4 +1,6 @@
-﻿using Business.Interfaces;
+﻿using Business.Dtos;
+using Business.Factories;
+using Business.Interfaces;
 using Business.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -14,13 +16,13 @@ public partial class ProjectEditViewModel(IProjectService projectService, IServi
     private Project _project = new ();
 
     [RelayCommand]
-    private void Save()
+    private async Task Save()
     {
-        //var result = _projectService.UpdateProject(Project);
+        var updateForm = ProjectFactory.Back(Project);
 
-        var result = true;
+        var result =  await _projectService.UpdateProjectAsync((x => x.Id == Project.Id), updateForm);
 
-        if (result)
+        if (result != null)
         {
             var mainViewModel = _serviceProvider.GetRequiredService<MainViewModel>();
             mainViewModel.CurrentViewModel = _serviceProvider.GetRequiredService<ProjectListViewModel>();

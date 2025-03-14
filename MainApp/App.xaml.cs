@@ -1,11 +1,14 @@
 ﻿using Business.Interfaces;
-using Business.Repositories;
 using Business.Services;
 using MainApp.ViewModels;
 using MainApp.Views;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Windows;
+using Data.Contexts;
+using Microsoft.EntityFrameworkCore;
+using Data.Interfaces;
+using Data.Repositories;
 
 namespace MainApp
 {
@@ -22,7 +25,15 @@ namespace MainApp
                 .ConfigureServices(services =>
                 {
                     services.AddSingleton<IProjectRepository, ProjectRepository>();
+                    services.AddSingleton<ICustomerRepository, CustomerRepository>();
+
                     services.AddSingleton<IProjectService, ProjectService>();
+                    services.AddSingleton<ICustomerService, CustomerService>();
+
+
+                    services.AddDbContext<DataContext>(options => options.UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\.NetProjects\Graphic_Task\Data\Data\database.mdf;Integrated Security=True;Connect Timeout=30"), ServiceLifetime.Scoped);
+                    services.AddDbContextFactory<DataContext>(options =>
+    options.UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\.NetProjects\Graphic_Task\Data\Data\database.mdf;Integrated Security=True;Connect Timeout=30"));
 
                     services.AddTransient<ProjectListViewModel>();
                     services.AddTransient<ProjectAddViewModel>();

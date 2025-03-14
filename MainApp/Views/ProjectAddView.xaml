@@ -6,14 +6,17 @@
              xmlns:local="clr-namespace:MainApp.Views"
              xmlns:viewmodels="clr-namespace:MainApp.ViewModels"
              xmlns:models="clr-namespace:Business.Models;assembly=Business"
+             xmlns:dtos="clr-namespace:Business.Dtos;assembly=Business"
+
              d:DataContext="{d:DesignInstance Type=viewmodels:ProjectAddViewModel}"
              
              Background="White"
              mc:Ignorable="d" 
              
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="850" d:DesignWidth="800">
     <Grid Margin="15">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
@@ -34,9 +37,32 @@
             <TextBlock Text="Status"/>
             <TextBox Text="{Binding Project.Status}" Margin="0 0 0 10" Padding="4"/>
 
+            <TextBlock Text="Customer Name"/>
+            <TextBox Text="{Binding Project.CustomerName}" Margin="0 0 0 10" Padding="4"/>
+
+            <!--<ListView Grid.Row="2" ItemsSource="{Binding Project}" Margin="0 20 0 0" HorizontalAlignment="Stretch">
+                <ListView.ItemTemplate>
+                    <DataTemplate DataType="dtos:ProjectRegistrationForm">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Text="{Binding ProjectName}"/>
+                                <TextBlock Text="{Binding Service}"/>
+                                <TextBlock Text="{Binding ProjectManager}"/>
+                                <TextBlock Text="{Binding Status}"/>
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>-->
         </StackPanel>
 
-        <StackPanel Grid.Row="2">
+        <StackPanel Grid.Row="3">
             <Button Content="Save" Command="{Binding SaveCommand}" Margin="0 10 0 5" Padding="5"/>
             <Button Content="Cancel" Command="{Binding GoToListViewCommand}" Margin="0 10 0 5" Padding="5"/>
 

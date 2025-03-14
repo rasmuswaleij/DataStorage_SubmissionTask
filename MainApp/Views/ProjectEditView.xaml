@@ -20,17 +20,22 @@
 
         <TextBlock Grid.Row="0" Grid.Column="0" Text="Edit project" FontSize="20" FontWeight="Bold"/>
         <StackPanel Grid.Row="1" Margin="0 20 0 0">
-            <TextBlock Text="Project name"/>
+            <TextBlock Text="Project name" FontWeight="Bold"/>
             <TextBox Text="{Binding Project.ProjectName}" Margin="0 0 0 10" Padding="4"/>
 
-            <TextBlock Text="Project manager"/>
+            <TextBlock Text="Project manager" FontWeight="Bold"/>
             <TextBox Text="{Binding Project.ProjectManager}" Margin="0 0 0 10" Padding="4"/>
 
-            <TextBlock Text="Service"/>
+            <TextBlock Text="Service" FontWeight="Bold"/>
             <TextBox Text="{Binding Project.Service}" Margin="0 0 0 10" Padding="4"/>
 
-            <TextBlock Text="Status"/>
+            <TextBlock Text="Status" FontWeight="Bold"/>
             <TextBox Text="{Binding Project.Status}" Margin="0 0 0 10" Padding="4"/>
+
+
+
+            <TextBlock Text="Customer" FontWeight="Bold"/>
+            <TextBox Text="{Binding Project.Customer.Name}" Margin="0 0 0 10" Padding="4"/>
         </StackPanel>
 
         <StackPanel Grid.Row="2">

@@ -4,7 +4,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.DependencyInjection;
 using System.Collections.ObjectModel;
-using System.Security.RightsManagement;
+using System.Diagnostics;
 
 namespace MainApp.ViewModels;
 public partial class ProjectListViewModel : ObservableObject
@@ -12,28 +12,39 @@ public partial class ProjectListViewModel : ObservableObject
     private readonly IProjectService _projectService;
     private readonly IServiceProvider _serviceProvider;
 
+
+    [ObservableProperty]
+    private ObservableCollection<Project> _projects = [];
+
     public ProjectListViewModel(IServiceProvider serviceProvider, IProjectService projectService)
     {
         _serviceProvider = serviceProvider;
         _projectService = projectService;
 
-        var project1 = new Project()
-        {
-            ProjectManager = "Rasmus Waleij",
-            ProjectName = "Programutveckling",
-            Service = "Konsult",
-            Status = "Ongoing"
-        };
-
-        var enumerable = new[] { project1 };
-
-        _projects = new ObservableCollection<Project>(enumerable);
-
-        //_projects = new ObservableCollection<Project>(_projectService.GetAll);
+        //Idén kring utförandet av metoden Load() är delvis hämtad från ChatGPT
+        _ = Load();
     }
 
-    [ObservableProperty]
-    private ObservableCollection<Project> _projects = [];
+    public async Task Load()
+    {
+        try
+        {
+            var projects = await _projectService.GetAllProjectsAsync();
+            if (projects != null)
+            {
+                foreach (var project in projects)
+                {
+                    Debug.WriteLine("A project is added to the observable collection");
+                    Projects.Add(project);
+                }
+            }
+        }
+        finally
+        {
+            Debug.WriteLine("LoadProjectsAsync är klar.");
+        }
+    }
+
 
     [RelayCommand]
     private void GoToAddView()
